@@ -9,11 +9,7 @@ def add_worker(Register):
     WorkerDirectory = Register.directory["workers"]
 
     if name:
-        worker_id = len(WorkerDirectory) + 1
-        newWorker = Worker(name, worker_id)
-        Register.addWorker(newWorker, worker_id)
-        print(WorkerDirectory[worker_id].name)
-        # workers[worker_id] = {'name': name}
-        return jsonify({'message': 'Worker added successfully', 'worker_id': worker_id}), 201
+        newWorker = Worker(name)
+        return Register.addWorker(newWorker)
     else:
         return jsonify({'error': 'Invalid data'}), 400
