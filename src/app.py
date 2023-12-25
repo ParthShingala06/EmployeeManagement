@@ -1,9 +1,9 @@
 from flask import Flask
 
 # from working_hour_registry import app
-from Empolyee_hour_directory.AddWorker import add_worker
-from Empolyee_hour_directory.AddEntry import log_entry
-from Empolyee_hour_directory.models import Directory
+from src.Empolyee_hour_directory.WorkerController import add_worker, all_workers
+from src.Empolyee_hour_directory.LogController import log_entry, get_entry_by_id
+from Empolyee_hour_directory.Models.Directory import Directory
 
 app = Flask(__name__)
 
@@ -22,7 +22,13 @@ def add_worker_route():
 def update_worker_route(worker_id):
     return log_entry(Register, worker_id)
 
-# Other routes related to working hours (log_entry, get_analytics) can be added here
+@app.route('/entries_by_id/<int:worker_id>', methods=['GET'])
+def get_worker_entries_route(worker_id):
+    return get_entry_by_id(Register, worker_id)
+
+@app.route('/all_workers', methods=['GET'])
+def get_all_worker_route():
+    return all_workers(Register)
 
 if __name__ == '__main__':
     app.run(debug=True)

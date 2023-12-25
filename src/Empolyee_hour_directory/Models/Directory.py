@@ -1,4 +1,9 @@
 from flask import jsonify
+import json
+
+from Empolyee_hour_directory.Models.Entry import Entry
+from Empolyee_hour_directory.Models.Worker import Worker
+
 
 class Directory:
     def __init__(self):
@@ -22,18 +27,25 @@ class Directory:
             self.directory["workers"][id].entries.append(EntryNode)
             return jsonify({'message': 'Entry added successfully', 'worker_id': id}), 201    
         else:
-            return jsonify({'message': 'No Worker With this ID'}), 201        
+            return jsonify({'message': 'No Worker With this ID'}), 201
+
+    def getEntryById(self, id):
+        if id in self.directory["workers"]:
+            print("yes", len(self.directory["workers"][id].entries))
+            serialized_worker = Worker.serialize_Worker(self.directory["workers"][id])
+            return jsonify(serialized_worker) 
+        else:
+            return None   
+    
+    def getAllWorkers(self):
+        workers = {}
+        for worker in self.directory["workers"].values():
+            serialized_worker = Worker.serialize_all_workers(worker)
+            workers[int(worker.id)]=serialized_worker
+        
+        return jsonify(workers)
 
 
-class Worker:
-    def __init__(self, name):
-        self.id = None
-        self.name = name
-        self.entries = []
 
-
-class Entry:
-    def __init__(self, timestamp):
-        self.timestamp = timestamp  
 
 
