@@ -32,17 +32,28 @@ class Directory:
     def getEntryById(self, id, flat = 0):
         if id in self.directory["workers"]:
             if flat == 1: return self.directory["workers"][id]
-            serialized_worker = Worker.serialize_Worker(self.directory["workers"][id])
+            serialized_worker = Worker.serialize_Worker_With_Entity(self.directory["workers"][id])
             return jsonify(serialized_worker) 
         else: 
             return None   
     
-    def getAllWorkers(self):
+    def getAllWorkers(self, flat = 0):
         workers = {}
         for worker in self.directory["workers"].values():
-            serialized_worker = Worker.serialize_all_workers(worker)
+            serialized_worker = Worker.serialize_Worker_Without_Entity(worker)
             workers[int(worker.id)]=serialized_worker
         
+        if flat == 1: return workers
+        return jsonify(workers)
+
+
+    def getAllWorkersWithEntities(self, flat = 0):
+        workers = {}
+        for worker in self.directory["workers"].values():
+            serialized_worker = Worker.serialize_Worker_With_Entity(worker)
+            workers[int(worker.id)]=serialized_worker
+        
+        if flat == 1: return workers
         return jsonify(workers)
 
 

@@ -6,16 +6,13 @@ class Worker:
         self.name = name
         self.entries = []
     
-    def serialize_Worker(Obj):
+    def serialize_Worker_With_Entity(Obj):
         print("IsInstance", type(Obj))
         if isinstance(Obj, Worker):
-            print("Yes")
             entries = []
             for entry in Obj.entries:
-                print(entry)
                 entries.append(Entry.serialize(entry))
-
             return {'worker_id': Obj.id, 'name': Obj.name, 'entries': entries}
     
-    def serialize_all_workers(Obj):
+    def serialize_Worker_Without_Entity(Obj):
         return {'worker_id': Obj.id, 'name': Obj.name}

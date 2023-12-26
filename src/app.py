@@ -1,6 +1,6 @@
 from flask import Flask
 
-from Empolyee_hour_directory.WorkerController import add_worker, all_workers
+from Empolyee_hour_directory.WorkerController import add_worker, all_workers, top_n_workers
 from Empolyee_hour_directory.LogController import log_entry, get_entry_by_id, get_total_time_spent
 from Empolyee_hour_directory.Models.Directory import Directory
 
@@ -28,6 +28,10 @@ def get_worker_entries_route(worker_id):
 @app.route('/total_time_by_id/<int:worker_id>', methods=['GET'])
 def get_total_time_by_id_route(worker_id):
     return get_total_time_spent(Register, worker_id)
+
+@app.route('/top_workers/<int:number>', methods=['GET'])
+def get_top_workers_route(number):
+    return top_n_workers(Register, number)
 
 @app.route('/all_workers', methods=['GET'])
 def get_all_worker_route():
