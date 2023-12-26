@@ -29,12 +29,12 @@ class Directory:
         else:
             return jsonify({'message': 'No Worker With this ID'}), 201
 
-    def getEntryById(self, id):
+    def getEntryById(self, id, flat = 0):
         if id in self.directory["workers"]:
-            print("yes", len(self.directory["workers"][id].entries))
+            if flat == 1: return self.directory["workers"][id]
             serialized_worker = Worker.serialize_Worker(self.directory["workers"][id])
             return jsonify(serialized_worker) 
-        else:
+        else: 
             return None   
     
     def getAllWorkers(self):
