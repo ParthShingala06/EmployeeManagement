@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import jsonify
 
-from Empolyee_hour_directory.WorkerController import add_worker, all_workers, top_n_workers
+from Empolyee_hour_directory.WorkerController import add_worker, all_workers, top_n_workers, promote_workers
 from Empolyee_hour_directory.SalaryController import salary_update, salary_slab, salary_by_id
 from Empolyee_hour_directory.LogController import log_entry, get_entry_by_id, get_total_time_spent
 
@@ -22,6 +22,10 @@ def salary_update_route():
 @app.route('/log_entry/<int:worker_id>', methods=['POST'])
 def update_worker_route(worker_id):
     return log_entry(Register, worker_id)
+
+@app.route('/promote_worker', methods=['POST'])
+def promote_worker_route():
+    return promote_workers(Register)
 
 @app.route('/entries_by_id/<int:worker_id>', methods=['GET'])
 def get_worker_entries_route(worker_id):
@@ -46,7 +50,6 @@ def get_all_worker_route():
 @app.route('/salary_slabs', methods=['GET'])
 def salary_slabs_route():
     return salary_slab(Register)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

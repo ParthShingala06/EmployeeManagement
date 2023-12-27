@@ -31,4 +31,8 @@ def top_n_workers(Register, n):
         top_n_workers[id] = hours
     return jsonify(top_n_workers)
 
-    
+def promote_workers(Register):
+    data = request.get_json()
+    id = data.get('worker_id')
+    position = data.get('position')
+    return Register.promoteWorker(id, position)

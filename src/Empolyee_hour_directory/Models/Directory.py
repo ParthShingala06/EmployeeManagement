@@ -27,6 +27,11 @@ class Directory:
         self.directory["workers"][worker_id] = WorkerNode
         return jsonify({'message': 'Worker added successfully', 'worker_id': WorkerNode.id}), 201
     
+    def promoteWorker(self, id, position):
+        if id in self.directory["workers"]:
+            self.directory["workers"][id].position = position
+            return jsonify({'message': 'Worker positon promoted', 'position': position}), 201
+
     def logEntry(self, EntryNode, id):
         if id in self.directory["workers"]:
             self.directory["workers"][id].entries.append(EntryNode)
