@@ -11,3 +11,6 @@ def salary_update(Register):
 
 def salary_slab(Register):
     return Register.salarySlabs()
+
+def salary_by_id(Register, id):
+    return Register.salaryById(id)

@@ -60,6 +60,13 @@ class Directory:
         if flat == 1: return workers
         return jsonify(workers)
 
+    def salaryById(self, id):
+        if id in self.directory["workers"]:
+            position = self.directory["workers"][id].position
+            salary = self.directory["salary"].getSalary(position)
+            return salary
+        else: 
+            return None           
 
 
 

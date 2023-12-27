@@ -25,4 +25,18 @@ class Salary:
             self.MD = int(salary)
         elif position == "CEO":
             self.CEO = int(salary)
+    
+    def getSalary(self, position):
+        if position == "Analyst":
+            return self.Analyst
+        elif position == "Associate":
+            return self.Associate
+        elif position == "SrAssociate":
+            return self.SrAssociate
+        elif position == "VP":
+            return self.VP
+        elif position == "MD":
+            return self.MD
+        elif position == "CEO":
+            return self.CEO
 
