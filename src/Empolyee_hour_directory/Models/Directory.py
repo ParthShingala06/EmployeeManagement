@@ -1,14 +1,15 @@
 from flask import jsonify
-import json
 
 from Empolyee_hour_directory.Models.Entry import Entry
 from Empolyee_hour_directory.Models.Worker import Worker
+from Empolyee_hour_directory.Models.Salary import Salary
 
 
 class Directory:
     def __init__(self):
         self.directory = {
-            "workers" : {}
+            "workers" : {},
+            "salary" : Salary()
         }
     
     def addWorker(self, WorkerNode):

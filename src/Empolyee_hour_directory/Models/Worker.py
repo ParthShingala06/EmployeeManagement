@@ -1,9 +1,10 @@
 from Empolyee_hour_directory.Models.Entry import Entry
 
 class Worker:
-    def __init__(self, name):
+    def __init__(self, name, position = "Analyst"):
         self.id = None
         self.name = name
+        self.position = position
         self.entries = []
     
     def serialize_Worker_With_Entity(Obj):
@@ -12,7 +13,7 @@ class Worker:
             entries = []
             for entry in Obj.entries:
                 entries.append(Entry.serialize(entry))
-            return {'worker_id': Obj.id, 'name': Obj.name, 'entries': entries}
+            return {'worker_id': Obj.id, 'name': Obj.name, 'position': Obj.position, 'entries': entries}
     
     def serialize_Worker_Without_Entity(Obj):
-        return {'worker_id': Obj.id, 'name': Obj.name}
+        return {'worker_id': Obj.id, 'name': Obj.name, 'position': Obj.position}
