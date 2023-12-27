@@ -29,8 +29,6 @@ def top_n_workers(Register, n):
     top_n_workers = {}
     for hours, id in min_heap:
         top_n_workers[id] = hours
-    
     return jsonify(top_n_workers)
-
 
     

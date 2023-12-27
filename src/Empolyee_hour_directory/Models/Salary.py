@@ -1,3 +1,5 @@
+
+
 class Salary:
     def __init__(self, Analyst = 1000, Associate = 2000, SrAssociate = 3000, VP = 5000, MD = 10000, CEO = 20000):
         self.Analyst = Analyst
@@ -6,6 +8,9 @@ class Salary:
         self.VP = VP
         self.MD = MD
         self.CEO = CEO 
+
+    def serialize(self):
+        return {"Analyst": self.Analyst, "Associate": self.Associate, "SrAssociate": self.SrAssociate, "VP": self.VP, "MD": self.MD, "CEO": self.CEO}
 
     def SalaryUpdate(self, position, salary):
         if position == "Analyst":

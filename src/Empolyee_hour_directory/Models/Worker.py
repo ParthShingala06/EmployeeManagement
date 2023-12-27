@@ -7,13 +7,11 @@ class Worker:
         self.position = position
         self.entries = []
     
-    def serialize_Worker_With_Entity(Obj):
-        print("IsInstance", type(Obj))
-        if isinstance(Obj, Worker):
-            entries = []
-            for entry in Obj.entries:
-                entries.append(Entry.serialize(entry))
-            return {'worker_id': Obj.id, 'name': Obj.name, 'position': Obj.position, 'entries': entries}
+    def serialize_Worker_With_Entity(self):
+        entries = []
+        for entry in self.entries:
+            entries.append(Entry.serialize(entry))
+        return {'worker_id': self.id, 'name': self.name, 'position': self.position, 'entries': entries}
     
-    def serialize_Worker_Without_Entity(Obj):
-        return {'worker_id': Obj.id, 'name': Obj.name, 'position': Obj.position}
+    def serialize_Worker_Without_Entity(self):
+        return {'worker_id': self.id, 'name': self.name, 'position': self.position}
