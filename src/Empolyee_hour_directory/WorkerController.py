@@ -8,11 +8,13 @@ def add_worker(Register):
     data = request.get_json()
     name = data.get('worker_name')
     position = data.get('position')
+    if not Register.positionChecker(position):
+        return {'error': 'Invalid position'}
     if name:
         newWorker = Worker(name, position)
         return Register.addWorker(newWorker)
     else:
-        return jsonify({'error': 'Invalid data'}), 400
+        return {'error': 'Invalid data'}
 
 def all_workers(Register):
     return Register.getAllWorkers()
@@ -29,7 +31,7 @@ def top_n_workers(Register, n):
     top_n_workers = {}
     for hours, id in min_heap:
         top_n_workers[id] = hours
-    return jsonify(top_n_workers)
+    return top_n_workers
 
 def promote_workers(Register):
     data = request.get_json()

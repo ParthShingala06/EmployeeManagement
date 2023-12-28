@@ -12,19 +12,31 @@ class Salary:
     def serialize(self):
         return {"Analyst": self.Analyst, "Associate": self.Associate, "SrAssociate": self.SrAssociate, "VP": self.VP, "MD": self.MD, "CEO": self.CEO}
 
+    def positionChecker(self, position):
+        if position in ("Analyst", "Associate", "SrAssociate", "VP", "MD", "CEO"): return True
+        else: return False
+
     def SalaryUpdate(self, position, salary):
         if position == "Analyst":
             self.Analyst = int(salary)
+            return {'message': 'Salary Updated'}
         elif position == "Associate":
             self.Associate = int(salary)
+            return {'message': 'Salary Updated'}
         elif position == "SrAssociate":
             self.SrAssociate = int(salary)
+            return {'message': 'Salary Updated'}
         elif position == "VP":
             self.VP = int(salary)
+            return {'message': 'Salary Updated'}
         elif position == "MD":
             self.MD = int(salary)
+            return {'message': 'Salary Updated'}
         elif position == "CEO":
             self.CEO = int(salary)
+            return {'message': 'Salary Updated'}
+        else:
+            return {'message': 'No Position with this name'}
     
     def getSalary(self, position):
         if position == "Analyst":

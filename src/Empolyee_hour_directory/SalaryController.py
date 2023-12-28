@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import request
 import heapq
 
 from Empolyee_hour_directory.LogController import get_total_time_spent
