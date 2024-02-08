@@ -24,6 +24,30 @@ Welcome to HRView, an Employee Management API developed using Python and Flask. 
 - RESTful API
 - Swagger
 
+## Getting Started
+
+Follow these steps to get started with HRView:
+
+1. Clone the repository:
+   ```
+   git clone %Repo%
+   ```
+
+2. Install dependencies:
+   ```
+   pip install -U Flask
+   ```
+
+3. Run the application:
+   ```
+   python app.py
+   ```
+
+4. Access the API documentation through Swagger at:
+   ```
+   http://localhost:5000/api/docs
+   ```
+   
 ## Endpoints
 
 ### 1. Add Worker
