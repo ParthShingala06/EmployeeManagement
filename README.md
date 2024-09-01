@@ -40,7 +40,7 @@ Follow these steps to get started with HRView:
 
 3. Run the application:
    ```
-   python app.py
+   python src/app.py
    ```
 
 4. Access the API documentation through Swagger at:
