@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from Empolyee_hour_directory.Models.Entry import Entry
+from EmployeeManagement.Models.Entry import Entry
 
 def log_entry(Register, worker_id):
     newEntry = Entry(datetime.now())
