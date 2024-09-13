@@ -9,7 +9,7 @@ def add_worker(Register):
     name = data.get('worker_name')
     position = data.get('position')
     if not Register.positionChecker(position):
-        return {'error': 'Invalid position'}
+        return {'error': 'Invalid position. Positions: ["Analyst", "Associate", "SrAssociate", "VP", "MD", "CEO"] '}
     if name:
         newWorker = Worker(name, position)
         return Register.addWorker(newWorker)

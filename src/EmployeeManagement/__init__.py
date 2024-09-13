@@ -1,7 +1,7 @@
 import config
 from apiflask import APIFlask
 from flask_httpauth import HTTPTokenAuth
-from EmployeeManagement.Auth.Tokens import verifyToken
+from EmployeeManagement.Auth.Tokens import verifyToken, role_auth
 
 # Initialize the APIFlask app
 app = APIFlask(__name__, version=config.VERSION, title=config.TITLE, docs_ui=config.DOCS_UI)

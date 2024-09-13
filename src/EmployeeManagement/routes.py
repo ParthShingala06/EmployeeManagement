@@ -3,7 +3,7 @@ from apiflask import Schema
 from apiflask.fields import Integer, Float, String
 from apiflask.validators import Length, Range
 
-from EmployeeManagement import app, auth
+from EmployeeManagement import app, auth, role_auth
 from EmployeeManagement.Controllers.WorkerController import add_worker, all_workers, top_n_workers, promote_workers
 from EmployeeManagement.Controllers.SalaryController import salary_update, salary_slab, salary_by_id
 from EmployeeManagement.Controllers.LogController import log_entry, get_entry_by_id, get_total_time_spent
@@ -51,8 +51,10 @@ def add_worker_route(json_data):
 @app.input(PromoteSchema, location='json')
 @app.doc(security='ApiKeyAuth')
 @auth.login_required
+@role_auth('Admin', auth)
 def promote_worker_route(json_data):
     """Promote a worker"""
+    role_auth('Admin', auth)
     return promote_workers(Register)
 
 @app.get('/02_worker_info/top_workers/<int:number>')
@@ -71,6 +73,7 @@ def get_all_worker_route():
 @app.input(SalarySchema, location='json')
 @app.doc(security='ApiKeyAuth')
 @auth.login_required
+@role_auth('Admin', auth)
 def salary_update_route(json_data):
     """Update salary for a worker"""
     return salary_update(Register)
