@@ -10,14 +10,13 @@ def newUser():
     data = request.get_json()
     name = data.get('name')
     email = data.get('email')
-    tokens[token] = Token(name, email)
-    print(tokens)
+    role = "Admin" if email == "parth.shingalaa@gmail.com" else "User"
+    tokens[token] = Token(name, email, role)
     return {'Your Access Token': token }
 
 def verifyToken():
     # Access a specific header
     token = request.headers.get('X-Api-Key')
     if token in tokens.keys():
-        print("Found")
         return token
     return None

@@ -36,6 +36,7 @@ Follow these steps to get started with HRView:
 2. Install dependencies:
    ```
    pip install -U Flask
+   pip install -r requirements.txt
    ```
 
 3. Run the application:

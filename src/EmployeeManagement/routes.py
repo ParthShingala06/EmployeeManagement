@@ -49,6 +49,8 @@ def add_worker_route(json_data):
 
 @app.post('/02_worker_info/promote_worker')
 @app.input(PromoteSchema, location='json')
+@app.doc(security='ApiKeyAuth')
+@auth.login_required
 def promote_worker_route(json_data):
     """Promote a worker"""
     return promote_workers(Register)
@@ -67,6 +69,8 @@ def get_all_worker_route():
 # Salary Info API routes
 @app.post('/03_salary_info/salary_update')
 @app.input(SalarySchema, location='json')
+@app.doc(security='ApiKeyAuth')
+@auth.login_required
 def salary_update_route(json_data):
     """Update salary for a worker"""
     return salary_update(Register)
@@ -84,6 +88,8 @@ def salary_slabs_route():
 
 # TimeSheet Info API routes
 @app.post('/04_timesheet/log_entry/<int:worker_id>')
+@app.doc(security='ApiKeyAuth')
+@auth.login_required
 def update_worker_route(worker_id):
     """Log time entry for a worker"""
     return log_entry(Register, worker_id)
