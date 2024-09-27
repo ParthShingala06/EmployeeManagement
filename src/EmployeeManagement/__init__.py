@@ -10,19 +10,7 @@ app = APIFlask(__name__, version=config.VERSION, title=config.TITLE, docs_ui=con
 app.config.from_pyfile('../config.py')
 
 # Optional: Additional OpenAPI Info (not mandatory for authentication to work)
-app.info = {
-    'description': 'Employee Management API',
-    'termsOfService': 'http://example.com/terms/',
-    'contact': {
-        'name': 'API Support',
-        'url': 'http://www.example.com/support',
-        'email': 'support@example.com'
-    },
-    'license': {
-        'name': 'Apache 2.0',
-        'url': 'http://www.apache.org/licenses/LICENSE-2.0.html'
-    }
-}
+app.info = config.INFO
 
 # Define security scheme for API Key (if needed)
 app.security_schemes = {
