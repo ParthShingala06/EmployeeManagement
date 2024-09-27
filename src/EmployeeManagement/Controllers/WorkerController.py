@@ -1,15 +1,15 @@
-from flask import jsonify, request
+from flask import request
 import heapq
 
-from Empolyee_hour_directory.Models.Worker import Worker
-from Empolyee_hour_directory.LogController import get_total_time_spent
+from EmployeeManagement.Models.Worker import Worker
+from EmployeeManagement.Controllers.LogController import get_total_time_spent
 
 def add_worker(Register):
     data = request.get_json()
     name = data.get('worker_name')
     position = data.get('position')
     if not Register.positionChecker(position):
-        return {'error': 'Invalid position'}
+        return {'error': 'Invalid position. Positions: ["Analyst", "Associate", "SrAssociate", "VP", "MD", "CEO"] '}
     if name:
         newWorker = Worker(name, position)
         return Register.addWorker(newWorker)

@@ -1,4 +1,4 @@
-from Empolyee_hour_directory.Models.Entry import Entry
+from EmployeeManagement.Models.Entry import Entry
 
 class Worker:
     def __init__(self, name, position = "Analyst"):

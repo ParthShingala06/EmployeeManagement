@@ -1,5 +1,5 @@
 
-from Empolyee_hour_directory.Models.Salary import Salary
+from EmployeeManagement.Models.Salary import Salary
 
 
 class Directory:
@@ -73,7 +73,7 @@ class Directory:
         if id in self.directory["workers"]:
             position = self.directory["workers"][id].position
             salary = self.directory["salary"].getSalary(position)
-            return salary
+            return str(salary)
         else: 
             return {'message': 'No Worker With this ID'}            
 

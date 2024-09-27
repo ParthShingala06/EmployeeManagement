@@ -1,7 +1,7 @@
 from flask import request
 import heapq
 
-from Empolyee_hour_directory.LogController import get_total_time_spent
+from EmployeeManagement.Controllers.LogController import get_total_time_spent
 
 def salary_update(Register):
     data = request.get_json()
